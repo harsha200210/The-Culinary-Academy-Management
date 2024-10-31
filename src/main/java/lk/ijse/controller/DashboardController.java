@@ -1,2 +1,4 @@
-package lk.ijse.controller;public class DashboardController {
+package lk.ijse.controller;
+
+public class DashboardController {
 }
