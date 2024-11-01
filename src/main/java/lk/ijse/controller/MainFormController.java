@@ -55,7 +55,11 @@ public class MainFormController {
 
     @FXML
     void btnProgramOnAction(ActionEvent event) {
-
+        try {
+            changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/programForm.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -65,7 +69,11 @@ public class MainFormController {
 
     @FXML
     void btnStudentOnAction(ActionEvent event) {
-
+        try {
+            changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/studentForm.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

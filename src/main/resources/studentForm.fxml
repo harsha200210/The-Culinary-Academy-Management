@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="630.0" prefWidth="770.0" style="-fx-background-color: #FFE5B4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.StudentFormController">
+<AnchorPane fx:id="studentForm" prefHeight="630.0" prefWidth="770.0" style="-fx-background-color: #FFE5B4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.StudentFormController">
    <children>
       <Label layoutX="113.0" layoutY="46.0" text="Student Manage ">
          <font>
@@ -19,5 +26,88 @@
             <Image url="@asset/icon/icons8-student-48.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtId" layoutX="128.0" layoutY="138.0" onAction="#txtIdOnAction" />
+      <DatePicker fx:id="registerDatePicker" layoutX="514.0" layoutY="138.0" />
+      <TextField fx:id="txtName" layoutX="128.0" layoutY="195.0" onAction="#txtNameOnAction" />
+      <TextField fx:id="txtTel" layoutX="128.0" layoutY="307.0" />
+      <TextField fx:id="txtAddress" layoutX="128.0" layoutY="248.0" onAction="#txtAddressOnAction" />
+      <TableView fx:id="tblStudent" layoutX="57.0" layoutY="410.0" onMouseClicked="#tblStudentOnClickAction" prefHeight="200.0" prefWidth="656.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="79.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="129.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="148.0" text="Address" />
+            <TableColumn fx:id="colTel" prefWidth="110.0" text="Tel" />
+            <TableColumn fx:id="colRegisterDate" prefWidth="112.0" text="Register Date" />
+            <TableColumn fx:id="colProgram" prefWidth="77.0" text="Programs" />
+        </columns>
+      </TableView>
+      <CheckBox fx:id="yesCheckBox" layoutX="544.0" layoutY="198.0" mnemonicParsing="false" text="Yes" />
+      <CheckBox fx:id="noCheckBox" layoutX="637.0" layoutY="198.0" mnemonicParsing="false" text="No" />
+      <Pane fx:id="visiblePane" layoutX="368.0" layoutY="238.0" prefHeight="108.0" prefWidth="345.0">
+         <children>
+            <ChoiceBox fx:id="programChoiceBox" layoutX="146.0" layoutY="10.0" prefHeight="24.0" prefWidth="198.0" />
+            <TextField fx:id="txtInstallment" layoutX="146.0" layoutY="69.0" prefHeight="24.0" prefWidth="198.0" />
+            <Label layoutX="17.0" layoutY="14.0" prefHeight="16.0" prefWidth="79.0" text="Programs : ">
+               <font>
+                  <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="73.0" prefHeight="16.0" prefWidth="129.0" text="1 st Installment:  : ">
+               <font>
+                  <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="57.0" layoutY="142.0" text="ID :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="199.0" text="Name :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="252.0" text="Address :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="311.0" text="Tel :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="385.0" layoutY="142.0" prefHeight="16.0" prefWidth="129.0" text="Registation Date :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="385.0" layoutY="199.0" prefHeight="16.0" prefWidth="129.0" text="Select Program : ">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="627.0" layoutY="361.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #228B22;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="527.0" layoutY="361.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #E41B17;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="427.0" layoutY="361.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #1F45FC;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="327.0" layoutY="361.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #808080;" text="clear" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

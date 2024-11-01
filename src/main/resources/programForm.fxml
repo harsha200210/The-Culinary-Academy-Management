@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="630.0" prefWidth="770.0" style="-fx-background-color: #FFE5B4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ProgramFormController">
+   <children>
+      <Label layoutX="113.0" layoutY="46.0" text="Program Manage ">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="45.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@asset/icon/icons8-student-48.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtId" layoutX="162.0" layoutY="157.0" onAction="#txtIdOnAction" />
+      <TextField fx:id="txtDuration" layoutX="162.0" layoutY="217.0" onAction="#txtDurationOnAction" />
+      <TextField fx:id="txtFee" layoutX="503.0" layoutY="217.0" />
+      <TextField fx:id="txtName" layoutX="503.0" layoutY="157.0" onAction="#txtNameOnAction" />
+      <Label layoutX="83.0" layoutY="161.0" text="ID :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="221.0" text="Duration :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="432.0" layoutY="161.0" text="Name :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="432.0" layoutY="221.0" text="Fee :">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="590.0" layoutY="309.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #228B22;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="490.0" layoutY="309.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #E41B17;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="390.0" layoutY="309.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #1F45FC;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="290.0" layoutY="309.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #808080;" text="clear" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblProgram" layoutX="87.0" layoutY="382.0" onMouseClicked="#tblProgramOnClickAction" prefHeight="200.0" prefWidth="594.0">
+        <columns>
+          <TableColumn prefWidth="128.0" text="ID" />
+          <TableColumn prefWidth="178.0" text="Program Name" />
+            <TableColumn prefWidth="153.0" text="Duration" />
+            <TableColumn prefWidth="134.0" text="Fee(LKR)" />
+        </columns>
+      </TableView>
+      <Label layoutX="86.0" layoutY="240.0" text="(Months)">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="430.0" layoutY="238.0" text="(LKR)">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="11.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
