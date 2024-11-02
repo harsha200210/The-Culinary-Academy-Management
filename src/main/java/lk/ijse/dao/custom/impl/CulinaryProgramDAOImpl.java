@@ -76,4 +76,18 @@ public class CulinaryProgramDAOImpl implements CulinaryProgramDAO {
 
         return culinaryPrograms;
     }
+
+    @Override
+    public CulinaryProgram getCulinaryProgram(String programId){
+        CulinaryProgram culinaryProgram = null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        culinaryProgram = session.get(CulinaryProgram.class, programId);
+
+        transaction.commit();
+        session.close();
+
+        return culinaryProgram;
+    }
 }

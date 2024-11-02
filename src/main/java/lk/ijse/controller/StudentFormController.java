@@ -142,7 +142,7 @@ public class StudentFormController {
         txtName.clear();
         txtAddress.clear();
         txtTel.clear();
-        registerDatePicker.setValue(LocalDate.parse(""));
+        registerDatePicker.setValue(null);
     }
 
     @FXML

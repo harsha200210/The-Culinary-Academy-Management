@@ -41,4 +41,10 @@ public class ProgramBOImpl implements ProgramBO {
         }
         return allCulinaryProgramDTO;
     }
+
+    @Override
+    public CulinaryProgramDTO getCulinaryProgram(String programId){
+        CulinaryProgram culinaryProgram = culinaryProgramDAO.getCulinaryProgram(programId);
+        return new CulinaryProgramDTO(culinaryProgram.getProgramId(), culinaryProgram.getProgramName(), culinaryProgram.getDuration(), culinaryProgram.getFee(), culinaryProgram.getEnrollments());
+    }
 }

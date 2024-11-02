@@ -11,4 +11,5 @@ public interface ProgramBO extends SuperBO {
     void deleteCulinaryProgram(CulinaryProgramDTO culinaryProgramDTO);
     void updateCulinaryProgram(CulinaryProgramDTO culinaryProgramDTO);
     List<CulinaryProgramDTO> getAllCulinaryProgram();
+    CulinaryProgramDTO getCulinaryProgram(String programId);
 }

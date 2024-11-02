@@ -129,7 +129,7 @@ public class ProgramFormController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        programBO.deleteCulinaryProgram(getObject());
+        programBO.deleteCulinaryProgram(programBO.getCulinaryProgram(txtId.getText().trim()));
         loadAllPrograms();
         clearData();
     }
