@@ -1,6 +1,6 @@
-package lk.ijse.entity;
+package lk.ijse.dto;
 
-import jakarta.persistence.*;
+import lk.ijse.entity.Enrollment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,15 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
-public class Student {
-    @Id
+public class StudentDTO {
     private String studentId;
     private String name;
     private String address;
     private Long tel;
     private Date registrationDate;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments;
 }

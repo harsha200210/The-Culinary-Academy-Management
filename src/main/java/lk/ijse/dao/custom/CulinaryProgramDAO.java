@@ -11,4 +11,5 @@ public interface CulinaryProgramDAO extends SuperDAO {
     void deleteCulinaryProgram(CulinaryProgram culinaryProgram);
     void updateCulinaryProgram(CulinaryProgram culinaryProgram);
     List<CulinaryProgram> getAllCulinaryProgram();
+    CulinaryProgram getProgramsCheckName(String programName);
 }

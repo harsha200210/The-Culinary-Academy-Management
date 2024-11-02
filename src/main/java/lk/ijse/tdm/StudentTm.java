@@ -1,25 +1,20 @@
-package lk.ijse.entity;
+package lk.ijse.tdm;
 
-import jakarta.persistence.*;
+import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
-public class Student {
-    @Id
+public class StudentTm {
     private String studentId;
     private String name;
     private String address;
     private Long tel;
     private Date registrationDate;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Enrollment> enrollments;
+    private Button program;
 }

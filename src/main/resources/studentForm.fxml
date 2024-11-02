@@ -41,8 +41,8 @@
             <TableColumn fx:id="colProgram" prefWidth="77.0" text="Programs" />
         </columns>
       </TableView>
-      <CheckBox fx:id="yesCheckBox" layoutX="544.0" layoutY="198.0" mnemonicParsing="false" text="Yes" />
-      <CheckBox fx:id="noCheckBox" layoutX="637.0" layoutY="198.0" mnemonicParsing="false" text="No" />
+      <CheckBox fx:id="yesCheckBox" layoutX="544.0" layoutY="198.0" mnemonicParsing="false" onAction="#yesCheckBoxOnAction" text="Yes" />
+      <CheckBox fx:id="noCheckBox" layoutX="637.0" layoutY="198.0" mnemonicParsing="false" onAction="#noCheckBoxOnAction" text="No" />
       <Pane fx:id="visiblePane" layoutX="368.0" layoutY="238.0" prefHeight="108.0" prefWidth="345.0">
          <children>
             <ChoiceBox fx:id="programChoiceBox" layoutX="146.0" layoutY="10.0" prefHeight="24.0" prefWidth="198.0" />

@@ -23,4 +23,11 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name = "program_id",foreignKey = @ForeignKey(name = "FK_PROGRAM"))
     private CulinaryProgram program;
+
+    public Enrollment(double firstInstallment, double balance, Student student, CulinaryProgram program) {
+        this.firstInstallment = firstInstallment;
+        this.balance = balance;
+        this.student = student;
+        this.program = program;
+    }
 }

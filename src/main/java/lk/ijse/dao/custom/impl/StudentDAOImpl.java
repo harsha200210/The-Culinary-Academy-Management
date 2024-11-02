@@ -1,79 +1,74 @@
 package lk.ijse.dao.custom.impl;
 
-import lk.ijse.dao.custom.CulinaryProgramDAO;
+import lk.ijse.dao.custom.StudentDAO;
 import lk.ijse.db.FactoryConfiguration;
 import lk.ijse.entity.CulinaryProgram;
+import lk.ijse.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class CulinaryProgramDAOImpl implements CulinaryProgramDAO {
+public class StudentDAOImpl implements StudentDAO {
 
     @Override
-    public void saveCulinaryProgram(CulinaryProgram culinaryProgram) {
+    public void saveStudent(Student student) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(culinaryProgram);
+        session.save(student);
 
         transaction.commit();
         session.close();
     }
 
     @Override
-    public void deleteCulinaryProgram(CulinaryProgram culinaryProgram) {
+    public void deleteStudent(Student student) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.delete(culinaryProgram);
+        session.delete(student);
 
         transaction.commit();
         session.close();
     }
 
     @Override
-    public void updateCulinaryProgram(CulinaryProgram culinaryProgram) {
+    public void updateStudent(Student student) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.update(culinaryProgram);
+        session.update(student);
 
         transaction.commit();
         session.close();
     }
 
     @Override
-    public List<CulinaryProgram> getAllCulinaryProgram() {
-        List<CulinaryProgram> culinaryPrograms;
+    public List<Student> getAllStudent() {
+        List<Student> students;
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        culinaryPrograms = session.createQuery("from CulinaryProgram", CulinaryProgram.class).list();
+        students = session.createQuery("from Student", Student.class).list();
 
         transaction.commit();
         session.close();
 
-        return culinaryPrograms;
+        return students;
     }
 
     @Override
-    public CulinaryProgram getProgramsCheckName(String programName){
-        CulinaryProgram culinaryPrograms = null;
-
+    public Student getStudent(String studentId){
+        Student student = null;
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        String hql = "FROM CulinaryProgram c WHERE c.programName = :programName";
-        Query<CulinaryProgram> query = session.createQuery(hql, CulinaryProgram.class);
-        query.setParameter("programName", programName);
-
-        culinaryPrograms = query.uniqueResult();
+        student = session.get(Student.class, studentId);
 
         transaction.commit();
         session.close();
 
-        return culinaryPrograms;
+        return student;
     }
 }
