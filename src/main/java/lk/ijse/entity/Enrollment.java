@@ -14,6 +14,7 @@ public class Enrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int enrollId;
     private double firstInstallment;
+    private double balance;
 
     @ManyToOne
     @JoinColumn(name = "student_id",foreignKey = @ForeignKey(name = "FK_STUDENT"))
