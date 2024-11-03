@@ -237,6 +237,7 @@ public class StudentFormController {
     }
 
     public boolean isValidStudent() {
+        if (!Regex.setTextColor(lk.ijse.util.TextField.STUDENTID, txtId)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.ADDRESS, txtAddress)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.TEL, txtTel)) return false;
@@ -268,5 +269,10 @@ public class StudentFormController {
     @FXML
     void txtTelKeyAction(KeyEvent event) {
         Regex.setTextColor(lk.ijse.util.TextField.TEL, txtTel);
+    }
+
+    @FXML
+    void txtIdKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.STUDENTID, txtId);
     }
 }

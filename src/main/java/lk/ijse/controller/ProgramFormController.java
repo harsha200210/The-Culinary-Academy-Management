@@ -202,6 +202,7 @@ public class ProgramFormController {
     }
 
     public boolean isValied() {
+        if (!Regex.setTextColor(lk.ijse.util.TextField.PROGRAMID, txtId)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.MONTH, txtDuration)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtFee)) return false;
@@ -222,5 +223,10 @@ public class ProgramFormController {
     @FXML
     void txtNameKeyAction(KeyEvent event) {
         Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName);
+    }
+
+    @FXML
+    void txtIdKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.PROGRAMID, txtId);
     }
 }

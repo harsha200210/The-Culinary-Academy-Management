@@ -11,6 +11,8 @@ public class Regex {
             case TEL -> "^[0]([1-9]{2})([0-9]){7}$";
             case MONTH -> "^[0-9]{1,5}$";
             case PRICE -> "^([0-9]){1,}[.]([0-9]){1,}$";
+            case STUDENTID -> "^S\\d{3}$";
+            case PROGRAMID -> "^CA\\d{4}$";
         };
 
         Pattern pattern = Pattern.compile(filed);

@@ -25,7 +25,7 @@
             <Image url="@asset/icon/icons8-student-48.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtId" layoutX="128.0" layoutY="138.0" onAction="#txtIdOnAction" />
+      <TextField fx:id="txtId" layoutX="128.0" layoutY="138.0" onAction="#txtIdOnAction" onKeyReleased="#txtIdKeyAction" />
       <DatePicker fx:id="registerDatePicker" layoutX="514.0" layoutY="138.0" />
       <TextField fx:id="txtName" layoutX="128.0" layoutY="195.0" onAction="#txtNameOnAction" onKeyReleased="#txtNameKeyAction" />
       <TextField fx:id="txtTel" layoutX="128.0" layoutY="307.0" onKeyReleased="#txtTelKeyAction" />
