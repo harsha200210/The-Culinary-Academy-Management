@@ -37,7 +37,7 @@
       <TextField fx:id="txtStudentId" editable="false" layoutX="193.0" layoutY="101.0" />
       <TextField fx:id="txtStudentName" editable="false" layoutX="193.0" layoutY="145.0" />
       <ChoiceBox fx:id="selectProgramChoiceBox" layoutX="193.0" layoutY="188.0" prefHeight="24.0" prefWidth="171.0" />
-      <TextField fx:id="txtInstallment" layoutX="193.0" layoutY="234.0" />
+      <TextField fx:id="txtInstallment" layoutX="193.0" layoutY="234.0" onKeyReleased="#txtInstallmentKeyAction" />
       <JFXButton layoutX="240.0" layoutY="303.0" onAction="#btnSaveOnAction" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #228B22;" text="Save" textFill="WHITE">
          <font>
             <Font name="DejaVu Serif Condensed Bold" size="15.0" />

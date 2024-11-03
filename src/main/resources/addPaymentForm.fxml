@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="addPaymentForm" prefHeight="400.0" prefWidth="474.0" style="-fx-background-color: #FFE5B4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AddPaymentFormController">
    <children>
       <Label layoutX="149.0" layoutY="41.0" prefHeight="16.0" prefWidth="178.0" text="Add Payment">
@@ -36,7 +35,7 @@
       </Label>
       <TextField fx:id="txtStudentId" editable="false" layoutX="214.0" layoutY="111.0" />
       <TextField fx:id="txtStudentName" editable="false" layoutX="214.0" layoutY="155.0" />
-      <TextField fx:id="txtPayment" layoutX="214.0" layoutY="244.0" />
+      <TextField fx:id="txtPayment" layoutX="214.0" layoutY="244.0" onKeyReleased="#txtPaymentKeyAction" />
       <JFXButton layoutX="261.0" layoutY="313.0" onAction="#btnSaveOnAction" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #228B22;" text="Save" textFill="WHITE">
          <font>
             <Font name="DejaVu Serif Condensed Bold" size="15.0" />

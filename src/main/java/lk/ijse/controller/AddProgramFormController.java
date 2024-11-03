@@ -7,12 +7,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.AddProgramBO;
 import lk.ijse.dto.CulinaryProgramDTO;
 import lk.ijse.tdm.StudentTm;
+import lk.ijse.util.Regex;
 
 import java.util.List;
 
@@ -62,9 +64,23 @@ public class AddProgramFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        addProgramBO.saveProgram(txtStudentId.getText().trim(),selectProgramChoiceBox.getValue().trim(), Double.parseDouble(txtInstallment.getText().trim()));
-        new Alert(Alert.AlertType.CONFIRMATION,"Program Added Successfully").show();
-        btnCancelOnAction(event);
+        if (isValied() && selectProgramChoiceBox.getValue() != null){
+            addProgramBO.saveProgram(txtStudentId.getText().trim(),selectProgramChoiceBox.getValue().trim(), Double.parseDouble(txtInstallment.getText().trim()));
+            new Alert(Alert.AlertType.CONFIRMATION,"Program Added Successfully").show();
+            btnCancelOnAction(event);
+        } else {
+            new Alert(Alert.AlertType.WARNING,"Please Select a Program").show();
+        }
+    }
+
+    public boolean isValied() {
+        if (!Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtInstallment)) return false;
+        return true;
+    }
+
+    @FXML
+    void txtInstallmentKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtInstallment);
     }
 
 }

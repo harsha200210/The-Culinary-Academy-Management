@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.AddPaymentBO;
 import lk.ijse.tdm.ViewAllTm;
+import lk.ijse.util.Regex;
 
 public class AddPaymentFormController {
 
@@ -43,9 +45,20 @@ public class AddPaymentFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        addPaymentBO.updateEnrollment(txtStudentId.getText().trim(),txtProgram.getText().trim(),Double.parseDouble(txtPayment.getText().trim()));
-        new Alert(Alert.AlertType.CONFIRMATION,"Payment successfully added!").show();
-        btnCancelOnAction(event);
+        if (isValied()){
+            addPaymentBO.updateEnrollment(txtStudentId.getText().trim(),txtProgram.getText().trim(),Double.parseDouble(txtPayment.getText().trim()));
+            new Alert(Alert.AlertType.CONFIRMATION,"Payment successfully added!").show();
+            btnCancelOnAction(event);
+        }
     }
 
+    public boolean isValied() {
+        if (!Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtPayment)) return false;
+        return true;
+    }
+
+    @FXML
+    void txtPaymentKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtPayment);
+    }
 }

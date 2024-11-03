@@ -23,9 +23,9 @@
          </image>
       </ImageView>
       <TextField fx:id="txtId" layoutX="162.0" layoutY="157.0" onAction="#txtIdOnAction" />
-      <TextField fx:id="txtDuration" layoutX="162.0" layoutY="217.0" onAction="#txtDurationOnAction" />
-      <TextField fx:id="txtFee" layoutX="503.0" layoutY="217.0" />
-      <TextField fx:id="txtName" layoutX="503.0" layoutY="157.0" onAction="#txtNameOnAction" />
+      <TextField fx:id="txtDuration" layoutX="162.0" layoutY="217.0" onAction="#txtDurationOnAction" onKeyReleased="#txtDurationKeyAction" />
+      <TextField fx:id="txtFee" layoutX="503.0" layoutY="217.0" onKeyReleased="#txtFeeKeyAction" />
+      <TextField fx:id="txtName" layoutX="503.0" layoutY="157.0" onAction="#txtNameOnAction" onKeyReleased="#txtNameKeyAction" />
       <Label layoutX="83.0" layoutY="161.0" text="ID :">
          <font>
             <Font name="DejaVu Sans Condensed Bold" size="13.0" />

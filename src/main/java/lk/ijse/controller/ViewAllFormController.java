@@ -92,7 +92,7 @@ public class ViewAllFormController {
     }
 
     private Button createButton(){
-        Button button = new Button("ADD");
+        Button button = new Button("Pay");
         button.setStyle("-fx-background-color: blue;-fx-text-fill: white;");
 
         button.setOnAction((e) -> {

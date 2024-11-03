@@ -3,10 +3,12 @@ package lk.ijse.controller;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.ProgramBO;
@@ -14,6 +16,7 @@ import lk.ijse.db.FactoryConfiguration;
 import lk.ijse.dto.CulinaryProgramDTO;
 import lk.ijse.entity.CulinaryProgram;
 import lk.ijse.tdm.ProgramTm;
+import lk.ijse.util.Regex;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -129,23 +132,47 @@ public class ProgramFormController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        programBO.deleteCulinaryProgram(programBO.getCulinaryProgram(txtId.getText().trim()));
-        loadAllPrograms();
-        clearData();
+        if (!LoginFormController.userDTO.getRole().equals("Admissions Coordinator")){
+            if (isValied() && !txtId.getText().isEmpty()){
+                programBO.deleteCulinaryProgram(programBO.getCulinaryProgram(txtId.getText().trim()));
+                loadAllPrograms();
+                clearData();
+            } else {
+                new Alert(Alert.AlertType.WARNING,"Please Enter All Fields !!").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING,"You cannot access this !!").show();
+        }
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        programBO.saveCulinaryProgram(getObject());
-        loadAllPrograms();
-        clearData();
+        if (!LoginFormController.userDTO.getRole().equals("Admissions Coordinator")){
+            if (isValied() && !txtId.getText().isEmpty()){
+                programBO.saveCulinaryProgram(getObject());
+                loadAllPrograms();
+                clearData();
+            } else {
+                new Alert(Alert.AlertType.WARNING,"Please Enter All Fields !!").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING,"You cannot access this !!").show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        programBO.updateCulinaryProgram(getObject());
-        loadAllPrograms();
-        clearData();
+        if (!LoginFormController.userDTO.getRole().equals("Admissions Coordinator")){
+            if (isValied() && !txtId.getText().isEmpty()){
+                programBO.updateCulinaryProgram(getObject());
+                loadAllPrograms();
+                clearData();
+            } else {
+                new Alert(Alert.AlertType.WARNING,"Please Enter All Fields !!").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING,"You cannot access this !!").show();
+        }
     }
 
     @FXML
@@ -174,4 +201,26 @@ public class ProgramFormController {
         txtDuration.requestFocus();
     }
 
+    public boolean isValied() {
+        if (!Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.MONTH, txtDuration)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtFee)) return false;
+        return true;
+    }
+
+    @FXML
+    void txtDurationKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.MONTH, txtDuration);
+    }
+
+    @FXML
+    void txtFeeKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtFee);
+    }
+
+
+    @FXML
+    void txtNameKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName);
+    }
 }

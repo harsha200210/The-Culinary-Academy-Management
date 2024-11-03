@@ -48,6 +48,8 @@ public class MainFormController {
     void btnDashboardOnAction(ActionEvent event) {
         try {
             changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/dashboard.fxml")));
+            defaultDesignButton();
+            changeDesignButton(btnDashboard);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -57,6 +59,8 @@ public class MainFormController {
     void btnProgramOnAction(ActionEvent event) {
         try {
             changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/programForm.fxml")));
+            defaultDesignButton();
+            changeDesignButton(btnProgram);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -64,13 +68,21 @@ public class MainFormController {
 
     @FXML
     void btnSettingOnAction(ActionEvent event) {
-
+        try {
+            changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/settingForm.fxml")));
+            defaultDesignButton();
+            changeDesignButton(btnSetting);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void btnStudentOnAction(ActionEvent event) {
         try {
             changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/studentForm.fxml")));
+            defaultDesignButton();
+            changeDesignButton(btnStudent);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -80,6 +92,8 @@ public class MainFormController {
     void btnViewOnAction(ActionEvent event) {
         try {
             changeForm.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/viewAllForm.fxml")));
+            defaultDesignButton();
+            changeDesignButton(btnView);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -96,6 +110,19 @@ public class MainFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void changeDesignButton(JFXButton button){
+        button.setStyle("-fx-background-color:  #CA762B; -fx-text-fill: #FFFFFF; -fx-border-color: #FFFFFF; -fx-border-width: 3; -fx-border-radius: 5; -fx-background-radius: 10;");
+    }
+
+    private void defaultDesignButton(){
+        String style = "-fx-background-color: #E2A76F; -fx-text-fill: #000000; -fx-border-color: #FFFFFF; -fx-border-width: 3; -fx-border-radius: 5; -fx-background-radius: 10;";
+        btnDashboard.setStyle(style);
+        btnProgram.setStyle(style);
+        btnSetting.setStyle(style);
+        btnStudent.setStyle(style);
+        btnView.setStyle(style);
     }
 
 }

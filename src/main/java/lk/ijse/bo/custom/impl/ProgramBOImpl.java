@@ -45,6 +45,9 @@ public class ProgramBOImpl implements ProgramBO {
     @Override
     public CulinaryProgramDTO getCulinaryProgram(String programId){
         CulinaryProgram culinaryProgram = culinaryProgramDAO.getCulinaryProgram(programId);
+        if (culinaryProgram == null){
+            return null;
+        }
         return new CulinaryProgramDTO(culinaryProgram.getProgramId(), culinaryProgram.getProgramName(), culinaryProgram.getDuration(), culinaryProgram.getFee(), culinaryProgram.getEnrollments());
     }
 }

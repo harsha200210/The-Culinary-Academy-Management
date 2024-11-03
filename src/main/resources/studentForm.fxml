@@ -27,9 +27,9 @@
       </ImageView>
       <TextField fx:id="txtId" layoutX="128.0" layoutY="138.0" onAction="#txtIdOnAction" />
       <DatePicker fx:id="registerDatePicker" layoutX="514.0" layoutY="138.0" />
-      <TextField fx:id="txtName" layoutX="128.0" layoutY="195.0" onAction="#txtNameOnAction" />
-      <TextField fx:id="txtTel" layoutX="128.0" layoutY="307.0" />
-      <TextField fx:id="txtAddress" layoutX="128.0" layoutY="248.0" onAction="#txtAddressOnAction" />
+      <TextField fx:id="txtName" layoutX="128.0" layoutY="195.0" onAction="#txtNameOnAction" onKeyReleased="#txtNameKeyAction" />
+      <TextField fx:id="txtTel" layoutX="128.0" layoutY="307.0" onKeyReleased="#txtTelKeyAction" />
+      <TextField fx:id="txtAddress" layoutX="128.0" layoutY="248.0" onAction="#txtAddressOnAction" onKeyReleased="#txtAddressKeyAction" />
       <TableView fx:id="tblStudent" layoutX="57.0" layoutY="410.0" onMouseClicked="#tblStudentOnClickAction" prefHeight="200.0" prefWidth="656.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="79.0" text="ID" />
@@ -43,7 +43,7 @@
       <Pane fx:id="visiblePane" layoutX="368.0" layoutY="188.0" prefHeight="108.0" prefWidth="345.0">
          <children>
             <ChoiceBox fx:id="programChoiceBox" layoutX="146.0" layoutY="10.0" prefHeight="24.0" prefWidth="198.0" />
-            <TextField fx:id="txtInstallment" layoutX="146.0" layoutY="69.0" prefHeight="24.0" prefWidth="198.0" />
+            <TextField fx:id="txtInstallment" layoutX="146.0" layoutY="69.0" onKeyReleased="#txtInstallmentKeyAction" prefHeight="24.0" prefWidth="198.0" />
             <Label layoutX="17.0" layoutY="14.0" prefHeight="16.0" prefWidth="79.0" text="Programs : ">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="13.0" />

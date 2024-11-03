@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -22,6 +23,7 @@ import lk.ijse.entity.Enrollment;
 import lk.ijse.entity.Student;
 import lk.ijse.tdm.ProgramTm;
 import lk.ijse.tdm.StudentTm;
+import lk.ijse.util.Regex;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -170,13 +172,17 @@ public class StudentFormController {
         txtAddress.clear();
         txtTel.clear();
         registerDatePicker.setValue(null);
+        txtInstallment.clear();
+        programChoiceBox.setValue(null);
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        studentBO.deleteStudent(studentBO.getStudent(txtId.getText().trim()));
-        loadAllStudent();
-        clearData();
+        if (isValidStudent()){
+            studentBO.deleteStudent(studentBO.getStudent(txtId.getText().trim()));
+            loadAllStudent();
+            clearData();
+        }
     }
 
     private StudentDTO getObject(){
@@ -185,16 +191,22 @@ public class StudentFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        studentBO.saveStudentWithProgram(getObject(),programChoiceBox.getValue(),Double.parseDouble(txtInstallment.getText()));
-        clearData();
-        loadAllStudent();
+        if (isValidStudent() && isValidEnroll()){
+            studentBO.saveStudentWithProgram(getObject(),programChoiceBox.getValue(),Double.parseDouble(txtInstallment.getText()));
+            clearData();
+            loadAllStudent();
+        } else {
+            new Alert(Alert.AlertType.WARNING,"Please Enter All Fields !!").show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        studentBO.updateStudent(getObject());
-        clearData();
-        loadAllStudent();
+        if (isValidStudent()){
+            studentBO.updateStudent(getObject());
+            clearData();
+            loadAllStudent();
+        }
     }
 
     @FXML
@@ -224,4 +236,37 @@ public class StudentFormController {
         txtAddress.requestFocus();
     }
 
+    public boolean isValidStudent() {
+        if (!Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.ADDRESS, txtAddress)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.TEL, txtTel)) return false;
+        if (txtId.getText().isEmpty() && registerDatePicker.getValue() == null) return false;
+        return true;
+    }
+
+    public boolean isValidEnroll(){
+        if (!Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtInstallment)) return false;
+        if (programChoiceBox.getValue() == null) return false;
+        return true;
+    }
+
+    @FXML
+    void txtAddressKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.ADDRESS, txtAddress);
+    }
+
+    @FXML
+    void txtInstallmentKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.PRICE, txtInstallment);
+    }
+
+    @FXML
+    void txtNameKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.NAME, txtName);
+    }
+
+    @FXML
+    void txtTelKeyAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.util.TextField.TEL, txtTel);
+    }
 }
