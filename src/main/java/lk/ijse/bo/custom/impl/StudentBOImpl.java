@@ -61,15 +61,21 @@ public class StudentBOImpl implements StudentBO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(student);
+        try {
+            session.save(student);
 
-        CulinaryProgram programsCheckName = culinaryProgramDAO.getProgramsCheckName(programName.trim());
+            CulinaryProgram programsCheckName = culinaryProgramDAO.getProgramsCheckName(programName.trim());
 
-        Enrollment enrollment = new Enrollment(installment,programsCheckName.getFee() - installment,student,programsCheckName);
-        session.save(enrollment);
+            Enrollment enrollment = new Enrollment(installment,programsCheckName.getFee() - installment,student,programsCheckName);
+            session.save(enrollment);
 
-        transaction.commit();
-        session.close();
+            transaction.commit();
+
+        } catch (Exception e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     @Override

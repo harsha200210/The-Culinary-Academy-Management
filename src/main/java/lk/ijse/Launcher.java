@@ -13,6 +13,7 @@ public class Launcher extends Application {
     public void start(Stage stage) throws IOException {
         stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/loginForm.fxml"))));
         //stage.initStyle(StageStyle.UNDECORATED);
+        stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }

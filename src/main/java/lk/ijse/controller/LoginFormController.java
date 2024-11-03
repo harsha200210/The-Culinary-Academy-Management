@@ -60,6 +60,7 @@ public class LoginFormController {
             Stage stage = (Stage) fullLoginForm.getScene().getWindow();
             stage.setScene(scene);
             stage.centerOnScreen();
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
