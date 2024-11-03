@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="630.0" prefWidth="770.0" style="-fx-background-color: #FFE5B4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewAllFormController">
+   <children>
+      <Label layoutX="123.0" layoutY="56.0" text="View Students">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="55.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@asset/icon/icons8-view-48.png" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="selectPrgramChoiceBox" layoutX="264.0" layoutY="167.0" prefHeight="24.0" prefWidth="204.0" />
+      <Label layoutX="64.0" layoutY="169.0" text="Select Program : ">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="viewTbl" layoutX="61.0" layoutY="240.0" prefHeight="271.0" prefWidth="649.0">
+        <columns>
+          <TableColumn fx:id="colStudentId" prefWidth="95.0" text="Student ID" />
+          <TableColumn fx:id="colStudentName" prefWidth="131.0" text="Student Name" />
+            <TableColumn fx:id="colRegisterDate" prefWidth="118.0" text="Register Date" />
+            <TableColumn fx:id="colInstallment" prefWidth="120.0" text="1 st Installment" />
+            <TableColumn fx:id="colBalance" prefWidth="107.0" text="Balance" />
+            <TableColumn fx:id="colPayment" prefWidth="76.0" text="Payment" />
+        </columns>
+      </TableView>
+      <Label layoutX="476.0" layoutY="564.0" text="Student Count : ">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblStudentCount" alignment="CENTER" layoutX="655.0" layoutY="564.0" prefHeight="21.0" prefWidth="35.0" text="0">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="653.0" layoutY="160.0" onMouseClicked="#refreshTblOnClickAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 5;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="27.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@asset/icon/icons8-refresh-48.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

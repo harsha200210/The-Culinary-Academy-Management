@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="addPaymentForm" prefHeight="400.0" prefWidth="474.0" style="-fx-background-color: #FFE5B4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AddPaymentFormController">
+   <children>
+      <Label layoutX="149.0" layoutY="41.0" prefHeight="16.0" prefWidth="178.0" text="Add Payment">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="115.0" text="Student ID : ">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="159.0" text="Student Name : ">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="202.0" text="Program : ">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="248.0" text="Payment : ">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtStudentId" editable="false" layoutX="214.0" layoutY="111.0" />
+      <TextField fx:id="txtStudentName" editable="false" layoutX="214.0" layoutY="155.0" />
+      <TextField fx:id="txtPayment" layoutX="214.0" layoutY="244.0" />
+      <JFXButton layoutX="261.0" layoutY="313.0" onAction="#btnSaveOnAction" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #228B22;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="132.0" layoutY="313.0" onAction="#btnCancelOnAction" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #E41B17;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtProgram" editable="false" layoutX="214.0" layoutY="198.0" />
+   </children>
+</AnchorPane>

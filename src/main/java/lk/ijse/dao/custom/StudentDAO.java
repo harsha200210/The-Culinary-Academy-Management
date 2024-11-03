@@ -12,4 +12,5 @@ public interface StudentDAO extends SuperDAO {
     void updateStudent(Student student);
     List<Student> getAllStudent();
     Student getStudent(String studentId);
+    Long getStudentCount();
 }

@@ -6,6 +6,7 @@ import lk.ijse.entity.CulinaryProgram;
 import lk.ijse.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -70,5 +71,23 @@ public class StudentDAOImpl implements StudentDAO {
         session.close();
 
         return student;
+    }
+
+    @Override
+    public Long getStudentCount(){
+        Long count = 0L;
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT COUNT(s) FROM Student s";
+        Query<Long> query = session.createQuery(hql, Long.class);
+
+        count = query.uniqueResult();
+
+        transaction.commit();
+        session.close();
+
+        return count;
     }
 }

@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface StudentBO extends SuperBO {
 
-    void saveStudent(StudentDTO studentDTO);
     void deleteStudent(StudentDTO studentDTO);
     void updateStudent(StudentDTO studentDTO);
     List<StudentDTO> getAllStudent();

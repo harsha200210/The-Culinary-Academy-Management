@@ -90,4 +90,21 @@ public class CulinaryProgramDAOImpl implements CulinaryProgramDAO {
 
         return culinaryProgram;
     }
+
+    @Override
+    public Long getCulinaryProgramCount(){
+        Long count = 0L;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT COUNT(c) FROM CulinaryProgram c";
+        Query<Long> query = session.createQuery(hql, Long.class);
+
+        count = query.uniqueResult();
+
+        transaction.commit();
+        session.close();
+
+        return count;
+    }
 }

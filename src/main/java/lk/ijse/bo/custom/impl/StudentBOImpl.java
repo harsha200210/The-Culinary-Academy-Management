@@ -22,12 +22,6 @@ public class StudentBOImpl implements StudentBO {
     CulinaryProgramDAO culinaryProgramDAO = (CulinaryProgramDAO) DAOFactory.getDAO(DAOFactory.DAOType.PROGRAM);
 
     @Override
-    public void saveStudent(StudentDTO studentDTO) {
-        Student student = new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getTel(),studentDTO.getRegistrationDate(),studentDTO.getEnrollments());
-        studentDAO.saveStudent(student);
-    }
-
-    @Override
     public void deleteStudent(StudentDTO studentDTO) {
         Student student = new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getTel(),studentDTO.getRegistrationDate(),studentDTO.getEnrollments());
         studentDAO.deleteStudent(student);

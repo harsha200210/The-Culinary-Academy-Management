@@ -13,4 +13,5 @@ public interface CulinaryProgramDAO extends SuperDAO {
     List<CulinaryProgram> getAllCulinaryProgram();
     CulinaryProgram getProgramsCheckName(String programName);
     CulinaryProgram getCulinaryProgram(String programId);
+    Long getCulinaryProgramCount();
 }

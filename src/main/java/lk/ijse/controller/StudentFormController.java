@@ -4,11 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.StudentBO;
 import lk.ijse.db.FactoryConfiguration;
@@ -21,6 +25,7 @@ import lk.ijse.tdm.StudentTm;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,9 +51,6 @@ public class StudentFormController {
 
     @FXML
     private TableColumn<?, ?> colTel;
-
-    @FXML
-    private CheckBox noCheckBox;
 
     @FXML
     private ChoiceBox<String> programChoiceBox;
@@ -80,13 +82,9 @@ public class StudentFormController {
     @FXML
     private Pane visiblePane;
 
-    @FXML
-    private CheckBox yesCheckBox;
-
     StudentBO studentBO = (StudentBO) BOFactory.getBO(BOFactory.BOType.STUDENT);
 
     public void initialize() {
-        visiblePane.setVisible(false);
         setCellValueFactory();
         loadAllStudent();
         setChoiceBoxData();
@@ -104,13 +102,42 @@ public class StudentFormController {
 
     private Button createButton(){
         Button button = new Button("ADD");
-        button.setStyle("-fx-background-color: blue;");
+        button.setStyle("-fx-background-color: blue;-fx-text-fill: white;");
 
         button.setOnAction((e) -> {
-            System.out.println("okay");
+            StudentTm selectedItem = tblStudent.getSelectionModel().getSelectedItem();
+            clearData();
+            if (selectedItem != null) {
+                loadAddProgramForm(selectedItem);
+                tblStudent.getSelectionModel().clearSelection();
+            } else {
+                // Show an alert if no item is selected
+                new Alert(Alert.AlertType.INFORMATION, "Select a row before clicking the button!").show();
+            }
         });
 
         return button;
+    }
+
+    private void loadAddProgramForm(StudentTm selectedItem) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/addProgramForm.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            // Get the controller for addProgramForm
+            AddProgramFormController controller = loader.getController();
+
+            // Pass the selected student to the new form
+            controller.setSelectedStudent(selectedItem);
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void setCellValueFactory() {
@@ -158,11 +185,7 @@ public class StudentFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        if (noCheckBox.isSelected()){
-            studentBO.saveStudent(getObject());
-        } else {
-            studentBO.saveStudentWithProgram(getObject(),programChoiceBox.getValue(),Double.parseDouble(txtInstallment.getText()));
-        }
+        studentBO.saveStudentWithProgram(getObject(),programChoiceBox.getValue(),Double.parseDouble(txtInstallment.getText()));
         clearData();
         loadAllStudent();
     }
@@ -185,21 +208,6 @@ public class StudentFormController {
             registerDatePicker.setValue(selectedItem.getRegistrationDate().toLocalDate());
         }
     }
-
-    @FXML
-    void noCheckBoxOnAction(ActionEvent event) {
-        noCheckBox.setSelected(true);
-        yesCheckBox.setSelected(false);
-        visiblePane.setVisible(false);
-    }
-
-    @FXML
-    void yesCheckBoxOnAction(ActionEvent event) {
-        yesCheckBox.setSelected(true);
-        noCheckBox.setSelected(false);
-        visiblePane.setVisible(true);
-    }
-
 
     @FXML
     void txtAddressOnAction(ActionEvent event) {
