@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.LoginBO;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.exception.ExceptionHandler;
+import lk.ijse.exception.InvalidCredentialsException;
 import lk.ijse.util.PasswordStorage;
 
 import java.io.IOException;
@@ -38,16 +40,16 @@ public class LoginFormController {
     @FXML
     void loginOnAction(ActionEvent event) {
         if (!inputUserName.getText().isEmpty() && !inputPassword.getText().isEmpty()) {
-            UserDTO loginUser = loginBO.getUser(inputUserName.getText().trim());
-            if(loginUser != null){
-                if (PasswordStorage.checkPassword(inputPassword.getText().trim(), loginUser.getPassword())){
-                    openMainForm();
-                    userDTO = loginUser;
-                } else {
-                    new Alert(Alert.AlertType.ERROR,"Invalid User Password !!").show();
-                }
-            } else {
-                new Alert(Alert.AlertType.ERROR,"Invalid User !!").show();
+            try {
+                UserDTO loginUser = loginBO.getUser(inputUserName.getText().trim());
+                    if (PasswordStorage.checkPassword(inputPassword.getText().trim(), loginUser.getPassword())){
+                        openMainForm();
+                        userDTO = loginUser;
+                    } else {
+                        new Alert(Alert.AlertType.ERROR,"Invalid User Password !!").show();
+                    }
+            } catch (InvalidCredentialsException e){
+                ExceptionHandler.handleException(e);
             }
         } else {
             new Alert(Alert.AlertType.WARNING,"Please Enter All Fields !!").show();

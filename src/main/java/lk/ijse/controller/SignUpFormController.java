@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.SignUpBO;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.exception.ExceptionHandler;
+import lk.ijse.exception.UserAlreadyExistsException;
 import lk.ijse.util.PasswordStorage;
 import lk.ijse.util.Regex;
 
@@ -80,7 +82,11 @@ public class SignUpFormController {
                 userDTO.setRole("Admissions Coordinator");
             }
 
-            signUpBO.signUp(userDTO);
+            try {
+                signUpBO.signUp(userDTO);
+            } catch (UserAlreadyExistsException e) {
+                ExceptionHandler.handleException(e);
+            }
 
             inputUserName.clear();
             inputPassword.clear();
