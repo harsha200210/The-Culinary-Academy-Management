@@ -17,11 +17,11 @@ public class Enrollment {
     private double balance;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", unique = true, foreignKey = @ForeignKey(name = "FK_STUDENT"))
+    @JoinColumn(name = "student_id", foreignKey = @ForeignKey(name = "FK_STUDENT"))
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "program_id", unique = true, foreignKey = @ForeignKey(name = "FK_PROGRAM"))
+    @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "FK_PROGRAM"))
     private CulinaryProgram program;
 
     public Enrollment(double firstInstallment, double balance, Student student, CulinaryProgram program) {
