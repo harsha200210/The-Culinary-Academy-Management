@@ -8,17 +8,30 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 public class FactoryConfiguration {
     private static FactoryConfiguration factoryConfiguration;
     private SessionFactory sessionFactory;
 
     private FactoryConfiguration() {
-        Configuration configuration = new Configuration().configure()
-                .addAnnotatedClass(User.class)
-                .addAnnotatedClass(CulinaryProgram.class)
-                .addAnnotatedClass(Enrollment.class)
-                .addAnnotatedClass(Student.class);
-        sessionFactory = configuration.buildSessionFactory();
+        try {
+            Properties properties = new Properties();
+            FileInputStream input = new FileInputStream("src/main/resources/hibernate.properties");
+            properties.load(input);
+            Configuration configuration = new Configuration();
+            configuration.setProperties(properties)
+                    .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(CulinaryProgram.class)
+                    .addAnnotatedClass(Enrollment.class)
+                    .addAnnotatedClass(Student.class);
+            sessionFactory = configuration.buildSessionFactory();
+        } catch (Exception e){
+
+        }
     }
 
     public Session getSession() {
